@@ -349,7 +349,7 @@ function App() {
             </p>
             <div className={`flex items-center gap-1.5 px-2 py-0.5 rounded-full border text-[10px] font-mono leading-none ${backendStatus === 'online' ? 'bg-emerald-950/20 border-emerald-900/30 text-emerald-500' : 'bg-rose-950/20 border-rose-900/30 text-rose-500'}`}>
                <span className={`w-1.5 h-1.5 rounded-full ${backendStatus === 'online' ? 'bg-emerald-500 animate-pulse' : 'bg-rose-500'}`}></span>
-               {backendStatus === 'online' ? 'SYSTEM_ONLINE' : 'SYSTEM_OFFLINE'}
+                {backendStatus === 'online' ? 'SYSTEM_ONLINE' : `SYSTEM_OFFLINE (${API_URL})`}
             </div>
           </div>
         </motion.header>
