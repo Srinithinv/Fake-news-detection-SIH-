@@ -1,6 +1,6 @@
 [build]
   base = "frontend"
-  command = "rm -rf node && npm run build"
+  command = "rm -rf node && npm install && npm run build"
   publish = "dist"
 
 [[redirects]]
