@@ -27,6 +27,7 @@ ChartJS.register(
 );
 
 const API_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+console.log("Connecting to API at:", API_URL);
 
 // Helper function to extract domain from URL
 const extractDomain = (url) => {
@@ -69,7 +70,8 @@ function App() {
       try {
         await axios.get(`${API_URL}/`);
         setBackendStatus('online');
-      } catch {
+      } catch (err) {
+        console.error("Health check failed:", err.message);
         setBackendStatus('offline');
       }
     };
