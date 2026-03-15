@@ -26,6 +26,8 @@ ChartJS.register(
   Legend
 );
 
+const API_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+
 // Helper function to extract domain from URL
 const extractDomain = (url) => {
   try {
@@ -65,7 +67,7 @@ function App() {
     // Backend Health Check
     const checkBackend = async () => {
       try {
-        await axios.get('http://localhost:8000/');
+        await axios.get(`${API_URL}/`);
         setBackendStatus('online');
       } catch {
         setBackendStatus('offline');
@@ -116,7 +118,7 @@ function App() {
       if (inputType === 'image') {
         const formData = new FormData();
         formData.append('file', imageFile);
-        response = await axios.post('http://localhost:8000/predict-image', formData);
+        response = await axios.post(`${API_URL}/predict-image`, formData);
         
         newResult = {
           type: 'image',
@@ -135,7 +137,7 @@ function App() {
       } else {
         const finalUrl = inputType === 'url' ? (url.startsWith('http') ? url : 'https://' + url) : '';
         const payload = inputType === 'url' ? { text: '', url: finalUrl } : { text: text, url: '' };
-        response = await axios.post('http://localhost:8000/predict', payload);
+        response = await axios.post(`${API_URL}/predict`, payload);
         
         newResult = {
           type: 'text',
