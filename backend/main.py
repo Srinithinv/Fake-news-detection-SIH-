@@ -15,6 +15,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get("/")
+def read_root():
+    return {"status": "online", "service": "Fake News Detector API"}
+
+@app.get("/health")
+def health_check():
+    return {"status": "healthy"}
+
 # Load the model and vectorizer on startup
 MODEL_PATH = "model.pkl"
 VECTORIZER_PATH = "vectorizer.pkl"
