@@ -4,6 +4,8 @@ __pycache__/
 *$py.class
 venv/
 .env
+node/
+node
 
 # Node
 node_modules/
